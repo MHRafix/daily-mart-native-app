@@ -1,7 +1,7 @@
 import { focusManager } from '@tanstack/react-query';
 import { AppRegistry, Platform, StyleSheet } from 'react-native';
-import StackNavigators from './src/components/app/Navigators/StackNavigatorControll';
-import AppGlobalProviders from './src/components/app/Providers/AppGlobalProvider';
+import StackNavigators from './src/app/Navigators/StackNavigatorControll';
+import AppGlobalProviders from './src/app/Providers/AppGlobalProvider';
 import { useAppState } from './src/hooks/useAppState';
 import { useOnlineManager } from './src/hooks/useOnlineManager';
 

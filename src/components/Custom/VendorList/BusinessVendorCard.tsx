@@ -1,15 +1,18 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { IServiceType } from '../../../app/model/ServiceTypes.model';
+import { IBusinessVendor } from '../../../app/model/BusinessVendor.model';
 import { COLORS } from '../../../app/utils/colors';
 
-interface ServiceCardProps {
-	serviceType: IServiceType;
+interface BusinessVendorCardProps {
+	businessVendor: IBusinessVendor;
 	handleRedirect: () => void;
 }
 
-const ServiceCard = ({ serviceType, handleRedirect }: ServiceCardProps) => {
+const BusinessVendorCard = ({
+	businessVendor,
+	handleRedirect,
+}: BusinessVendorCardProps) => {
 	return (
 		<TouchableOpacity
 			onPress={handleRedirect}
@@ -19,7 +22,7 @@ const ServiceCard = ({ serviceType, handleRedirect }: ServiceCardProps) => {
 			<Image
 				borderRadius={20}
 				source={{
-					uri: serviceType?.image,
+					uri: businessVendor?.cover,
 					width: 326,
 					height: 200,
 				}}
@@ -45,7 +48,7 @@ const ServiceCard = ({ serviceType, handleRedirect }: ServiceCardProps) => {
 							marginBottom: 5,
 						}}
 					>
-						{serviceType?.name}
+						{businessVendor?.vendorName}
 					</Text>
 					<Text
 						style={{
@@ -59,7 +62,7 @@ const ServiceCard = ({ serviceType, handleRedirect }: ServiceCardProps) => {
 							paddingVertical: 7,
 						}}
 					>
-						{serviceType?.vendorCount}
+						{12}
 					</Text>
 				</View>
 
@@ -82,7 +85,7 @@ const ServiceCard = ({ serviceType, handleRedirect }: ServiceCardProps) => {
 	);
 };
 
-export default ServiceCard;
+export default BusinessVendorCard;
 
 const styles = StyleSheet.create({
 	card: {

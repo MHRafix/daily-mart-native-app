@@ -1,8 +1,8 @@
-import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useQuery } from '@tanstack/react-query';
 import { Button, Input, Layout, Spinner, Text } from '@ui-kitten/components';
 import { StatusBar } from 'expo-status-bar';
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
 	KeyboardAvoidingView,
 	ScrollView,
@@ -11,11 +11,10 @@ import {
 	View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { UserMenu } from '../components/Common/Header/UserMenu';
+import serviceTypesApi from '../app/Services/ServiceTypes.api';
+import { IServiceType } from '../app/model/ServiceTypes.model';
+import { COLORS } from '../app/utils/colors';
 import ServiceCard from '../components/Custom/ServiceSelector/ServiceCard';
-import serviceTypesApi from '../components/app/Services/ServiceTypes.api';
-import { IServiceType } from '../components/app/model/ServiceTypes.model';
-import { COLORS } from '../components/app/utils/colors';
 
 interface ServiceSelectorScreenProps {
 	navigation: any;
@@ -26,34 +25,34 @@ const ServiceSelectorScreen = ({
 	navigation,
 	route,
 }: ServiceSelectorScreenProps) => {
-	useLayoutEffect(() => {
-		navigation.setOptions({
-			title: 'aaaaaa',
-			headerStyle: {
-				backgroundColor: '#fff',
-			},
-			headerLeft: () => (
-				<View>
-					<TouchableOpacity activeOpacity={0.5}>
-						<SimpleLineIcons name='menu' size={24} color='black' />
-					</TouchableOpacity>
-				</View>
-			),
+	// useLayoutEffect(() => {
+	// 	navigation.setOptions({
+	// 		title: 'aaaaaa',
+	// 		headerStyle: {
+	// 			backgroundColor: '#fff',
+	// 		},
+	// 		headerLeft: () => (
+	// 			<View>
+	// 				<TouchableOpacity activeOpacity={0.5}>
+	// 					<SimpleLineIcons name='menu' size={24} color='black' />
+	// 				</TouchableOpacity>
+	// 			</View>
+	// 		),
 
-			headerRight: () => (
-				<View
-					style={{
-						flexDirection: 'row',
-						justifyContent: 'flex-end',
-						gap: 15,
-						width: 180,
-					}}
-				>
-					<UserMenu />
-				</View>
-			),
-		});
-	}, [navigation]);
+	// 		headerRight: () => (
+	// 			<View
+	// 				style={{
+	// 					flexDirection: 'row',
+	// 					justifyContent: 'flex-end',
+	// 					gap: 15,
+	// 					width: 180,
+	// 				}}
+	// 			>
+	// 				<UserMenu />
+	// 			</View>
+	// 		),
+	// 	});
+	// }, [navigation]);
 
 	const [search, setSearch] = useState<string>();
 	const [serviceTypes, setServiceTypes] = useState<IServiceType[]>();
@@ -78,12 +77,12 @@ const ServiceSelectorScreen = ({
 						service?.name?.toLowerCase()?.includes?.(search?.toLowerCase())
 					)
 			  )
-			: null;
+			: navigation.navigate('Welcome');
 	};
 
 	const handleRedirect = (id: string, serviceTypeName: string) => {
 		navigation.navigate('VendorList', {
-			id,
+			serviceId: id,
 			serviceTypeName,
 		});
 	};
@@ -118,7 +117,7 @@ const ServiceSelectorScreen = ({
 							value={search}
 							onChangeText={(text) => setSearch(text)}
 						/>
-						<TouchableOpacity>
+						<TouchableOpacity activeOpacity={0.5}>
 							<Button
 								onPress={handleSearch}
 								size='large'
@@ -128,7 +127,7 @@ const ServiceSelectorScreen = ({
 									backgroundColor: COLORS.orange,
 								}}
 							>
-								<Ionicons name='filter' color={'black'} />
+								<Ionicons name='search' color={'black'} />
 							</Button>
 						</TouchableOpacity>
 					</View>

@@ -2,12 +2,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-import HomeScreen from '../../../screens/HomeScreen';
-import LoginScreen from '../../../screens/LoginScreen';
-import ServiceSelectorScreen from '../../../screens/ServiceSelectorScreen';
-import SignUpScreen from '../../../screens/SignUpScreen';
-import VendorListScreen from '../../../screens/VendorListScreen';
-import WelcomeScreen from '../../../screens/WelcomeScreen';
+import HomeScreen from '../../screens/HomeScreen';
+import LoginScreen from '../../screens/LoginScreen';
+import ServiceSelectorScreen from '../../screens/ServiceSelectorScreen';
+import SignUpScreen from '../../screens/SignUpScreen';
+import VendorListScreen from '../../screens/VendorListScreen';
+import WelcomeScreen from '../../screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,7 +23,7 @@ const StackNavigators = (props: StackNavigatorsProps) => {
 	// };
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName='Welcome'>
+			<Stack.Navigator initialRouteName='ServiceSelector'>
 				<Stack.Screen
 					options={{ headerShown: false }}
 					name='ServiceSelector'

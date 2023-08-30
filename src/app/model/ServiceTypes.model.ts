@@ -4,7 +4,7 @@ export interface IServiceType {
 	createdAt: Date;
 	description: string;
 	image: string;
-	itemsCount: number;
+	vendorCount: number;
 	name: string;
 	status: string;
 	updatedAt: Date;

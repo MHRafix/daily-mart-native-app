@@ -1,4 +1,5 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
+import { IServiceType } from '../model/ServiceTypes.model';
 import http from './http.config';
 
 class ServiceTypesApi {
@@ -8,7 +9,7 @@ class ServiceTypesApi {
 	 * Get service types
 	 * @returns
 	 */
-	getServiceTypes(): Promise<any> {
+	getServiceTypes(): Promise<AxiosResponse<IServiceType[]>> {
 		return this.httpReq.get('/service-types');
 	}
 }
