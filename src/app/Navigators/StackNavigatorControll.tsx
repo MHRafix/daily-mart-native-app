@@ -7,6 +7,7 @@ import LoginScreen from '../../screens/LoginScreen';
 import ServiceSelectorScreen from '../../screens/ServiceSelectorScreen';
 import SignUpScreen from '../../screens/SignUpScreen';
 import VendorListScreen from '../../screens/VendorListScreen';
+import VendorProductsShowScreen from '../../screens/VendorProductsShowScreen';
 import WelcomeScreen from '../../screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
@@ -53,6 +54,11 @@ const StackNavigators = (props: StackNavigatorsProps) => {
 					name='SignUp'
 					options={{ headerShown: false }}
 					component={SignUpScreen}
+				/>
+				<Stack.Screen
+					name='VendorProductsShowScreen'
+					options={{ headerShown: false }}
+					component={VendorProductsShowScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>

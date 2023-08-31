@@ -62,12 +62,11 @@ const VendorListScreen = ({ navigation, route }: VendorListScreenProps) => {
 			return vendors?.data;
 		}
 	);
-	console.log('businessVendors:', businessVendors);
 
 	const handleRedirect = (id: string) => {
-		// navigation.navigate('VendorList', {
-		// 	vendorId: id,
-		// });
+		navigation.navigate('VendorProductsShowScreen', {
+			vendorId: id,
+		});
 	};
 	return (
 		<SafeAreaView style={styles.container}>
